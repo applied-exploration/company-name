@@ -20,7 +20,7 @@ model = load_model()
 def analogy(worda, wordb, wordc):
     top_n = 5
     results = model.most_similar(positive=[worda, wordb],negative=[wordc],  topn=top_n)
-    df = pd.DataFrame([[worda,wordb, wordc] +[res[0] for res in results]], columns=['worda', 'wordb', 'wordc']+ [f'analogy_{i}' for i in range(top_n)])
+    df = pd.DataFrame([[res[0] for res in results]], columns=[f'analogy_{i}' for i in range(top_n)])
     return df
 
 @st.cache
