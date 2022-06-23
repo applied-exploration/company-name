@@ -1,0 +1,10 @@
+name: analogy
+channels:
+  - conda-forge
+dependencies:
+  - gensim
+  - pandas
+  - pip
+  - pip:
+    - streamlit
+prefix: /Users/daniel/mambaforge/envs/analogy
