@@ -36,16 +36,17 @@ adjs_human_nature = ["hot", "cold"]
 adjs_human_audacious = ["greatest", "ingenious", "audacious", "force", "incredible", "mastery", "world", "explosion", "tide", "universal", "upward", "forward", "powerful", "dangerous", "broken"]
 adjs_human_honest = ["noble", "tiny", "genuine", "candid", "sincere", "loyal", "pure", "nude", "honest", "natural", "mindful", "easy", "compact", "almost", "strange", "simple"]
 adjs_human_opposite = ["bound", "opposite","impossible", "vain", "absurd", "wild", "undoable", "unreasonable"]
+adjs_latin = ["pre-", "post-", "ab-", "ex-", "semi-", "ultra-", "hyper-"]
 
-adjs_human = adjs_human_food + adjs_human_travel + adjs_human_philsophy + adjs_human_relationship + adjs_human_antropomorphism + adjs_human_playful + adjs_human_nature + adjs_human_audacious + adjs_human_honest + adjs_human_opposite
+adjs_human = adjs_latin + adjs_human_food + adjs_human_travel + adjs_human_philsophy + adjs_human_relationship + adjs_human_antropomorphism + adjs_human_playful + adjs_human_nature + adjs_human_audacious + adjs_human_honest + adjs_human_opposite
 
-adjs_tech_applied_experimental = ["semi-", "ultra-", "hyper-", "compact", "scientific", "exploratory"]
+adjs_tech_applied_experimental = ["compact", "scientific", "exploratory"]
 adjs_tech_algorithm = ["recurrence", "volatile", "stochastic", "unknown", "algorithmic", "rapid", "deterministic", "unresolved", "random"]
 adjs_tech_inventive = ["future", "breakthrough"]
 adjs_tech_scientific = ["space", "infinite", "discrete", "indiscrete", "high-dimensional", "parallel", "absolute", "relative", "quantum", "super-",  "exo", "nano", "isometric", "continuous", "singular", "negative"]
 adjs_tech_abstract = ["indescribable", "invariant", "Intangible", "Impalpable", "Undecidable", "Ethereal", "Spectral", "recursive", "meta"]
 
-adjs_tech = adjs_tech_applied_experimental + adjs_tech_algorithm + adjs_tech_inventive + adjs_tech_scientific + adjs_tech_abstract
+adjs_tech = adjs_latin + adjs_tech_applied_experimental + adjs_tech_algorithm + adjs_tech_inventive + adjs_tech_scientific + adjs_tech_abstract
 
 words_tech = adjs_tech + things_tech
 words_human = adjs_human + things_human
