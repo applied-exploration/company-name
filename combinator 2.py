@@ -37,11 +37,12 @@ adjs_human_audacious = ["greatest", "ingenious", "audacious", "force", "incredib
 adjs_human_honest = ["noble", "tiny", "genuine", "candid", "sincere", "loyal", "pure", "nude", "honest", "natural", "mindful", "easy", "compact", "almost", "strange", "simple"]
 adjs_human_opposite = ["ambiguous", "bound", "opposite","impossible", "vain", "absurd", "wild", "undoable", "unreasonable"]
 adjs_latin = ["pre-", "post-", "ab-", "ex-", "semi-", "ultra-", "hyper-", "inter-"]
+verbs = ["poke"]
 
 adjs_human = adjs_latin + adjs_human_food + adjs_human_travel + adjs_human_philsophy + adjs_human_relationship + adjs_human_antropomorphism + adjs_human_playful + adjs_human_nature + adjs_human_audacious + adjs_human_honest + adjs_human_opposite
 
 adjs_tech_applied_experimental = ["compact", "scientific", "exploratory"]
-adjs_tech_algorithm = ["recurrence", "volatile", "stochastic", "unknown", "algorithmic", "rapid", "deterministic", "unresolved", "random"]
+adjs_tech_algorithm = ["buttons", "recurrence", "volatile", "stochastic", "unknown", "algorithmic", "rapid", "deterministic", "unresolved", "random"]
 adjs_tech_inventive = ["future", "breakthrough"]
 adjs_tech_scientific = ["space", "infinite", "discrete", "indiscrete", "high-dimensional", "parallel", "absolute", "relative", "quantum", "super-",  "exo", "nano", "isometric", "continuous", "singular", "negative"]
 adjs_tech_abstract = ["indescribable", "invariant", "Intangible", "Impalpable", "Undecidable", "Ethereal", "Spectral", "recursive", "meta"]
@@ -60,13 +61,14 @@ human_tech_word_combos = [tuple_to_str(combo) for combo in chain.from_iterable([
 tech_human_word_combos = [tuple_to_str(combo) for combo in chain.from_iterable([list(zip(words_human, [thing] * len(words_human))) for thing in things_tech])]
 
 human_human_word_combos = [tuple_to_str(combo) for combo in chain.from_iterable([list(zip(adjs_human, [thing] * len(adjs_human))) for thing in things_human])]
+adj_adj_combos = [tuple_to_str(combo) for combo in chain.from_iterable([list(zip(adjs_tech, [thing] * len(adjs_tech))) for thing in adjs_human])]
 
 # things_and_adjs = things + adjs
 # of_the_words = ["algorithms", "world", "logic", "machines", "play", "dream", "universe", "theories", "future", "loop", "mind"]
 # things_combined_word_combos = [combo[0] + " of the " + combo[1] for combo in chain.from_iterable([list(zip([thing] * len(things_and_adjs), things_and_adjs)) for thing in of_the_words])]
 
 
-word_combos = human_tech_word_combos + tech_human_word_combos + human_human_word_combos
+word_combos = human_tech_word_combos + tech_human_word_combos + human_human_word_combos + adj_adj_combos
 
 import pprint
 pprint.pprint(word_combos)
