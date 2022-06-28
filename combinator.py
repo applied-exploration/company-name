@@ -6,12 +6,14 @@ words_algorithm = ["algorithms", "function", "evolution","deterministic","decisi
 words_computing = ["compute", "processing", "closure", "engima", "logic", "machines", "byte", "engine", "kernel"]
 words_thinking = ["magic", "thoughts", "conception", "conjectures", "hunch"]
 words_scientific = ["synthesis", "projection", "morphology", "hypersphere", "manifold", "vector", "zero", "x", "discrete", "indiscrete", "dimension", "sequence", "factor",  "sphere", "ripple", "fraction", "precision", "scope",  "effect", "theory", "calculus", "exo", "vertex", "nano", "isometric", "continuous", "squared", "negative"]
-words_abstract = ["alpha", "beta", "zeta",  "Rewind", "loop"]
+words_abstract = ["alpha", "beta", "zeta",  "rewind", "loop"]
 words_audacious = ["force", "world", "explosion", "tide", "universe", "upward", "forward", "no limit", "jungle"]
 words_honest = ["tinkering"]
 words_playful = ["play", "dream"]
+words_nautical = ["admiral","anchor","azimuth","ballast","beacon","beam","bearing","belay","boom","buoy","canvas","convoy","cruise","mast","frigate","rudder","raft"]
+words_biology = ["meiosis", "osmosis", "biome", "embryo", "cycle", "catalysis", "fission","fusion","membrane","equilibrium","etalon"]
 
-things = words_applied_experimental + words_intelligence + words_algorithm + words_computing + words_thinking + words_scientific + words_abstract + words_audacious + words_honest + words_playful
+things = words_applied_experimental + words_intelligence + words_algorithm + words_computing + words_thinking + words_scientific + words_abstract + words_audacious + words_honest + words_playful + words_nautical + words_biology
 
 
 words_adj_applied_experimental = ["scientific", "exploratory", "frontier"]
@@ -26,6 +28,7 @@ words_adj_abstract = ["indescribable", "invariant", "Intangible", "Impalpable", 
 words_adj_antropomorphism = ["talking", "dancing", "playing", "human", "midnight", "wicked", "lucky", "sweet", "angry", "beautiful", "handsome", "hungry", "brave"]
 words_adj_playful = ["playful", "rendezvous", "joyful", "joyous", "cheerful", "jubilant", "exuberant", "spirited", "delightful", "upside-down", "ease of mind", "bouncy", "nuts", "thrilled", "euphoric", "affectionate", "wonder", "pleasant", "pleasing", "enchanted", "fascinating", "charismatic", "delightful", "youthful", "youth", "generation", "misplaced", "furry", "express", "improvised", "play", "silly", "curious"]
 words_adj_colors = ["yellow", "blue", "red", "black", "violet", "orange", "turquoise"]
+
 
 def tuple_to_str(tuple):
     return " ".join(tuple)
@@ -48,3 +51,6 @@ word_combos = adjs_word_combos + ending_word_combos + things_combined_word_combo
 
 import pprint
 pprint.pprint(word_combos)
+
+with open("words.log", "w") as log_file:
+    pprint.pprint(word_combos, log_file)
