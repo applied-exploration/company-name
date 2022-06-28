@@ -1,6 +1,6 @@
 from itertools import chain
 
-words_human_philosophy = ["verve", "anima", "phenomena", "life", "spirit", "intellect", "time",  "beginning", "positivism", "empiricism", "Renaissance", "principle"]
+words_human_philosophy = ["fiction", "verve", "anima", "phenomena", "life", "spirit", "intellect", "time",  "beginning", "positivism", "empiricism", "Renaissance", "principle"]
 words_human_attribute = ["ignorance", "collective", "soul", "ego", "vitality", "essence"]
 words_human_relationship = ["accord", "club", "peace", "closeness", "intimacy", 'family', "fondness", "passion", "sentiment"]
 words_human_food = ["cake", "beacon", "coffee", "beans", "pulp"]
@@ -19,7 +19,7 @@ words_tech_experimental = ["future", "frontier"]
 words_tech_intelligence = ["shortcuts", "complexity", "brain", "spark", "mind"]
 words_tech_algorithm = ["algorithms", "function", "evolution","deterministic","decision", "random"]
 words_tech_computing = ["compute", "engima", "logic", "machines", "byte", "engine", "kernel"]
-words_tech_scientific = ["axion", "Equilibrium", "joint", "friction", "synthesis", "projection", "morphology", "hypersphere", "manifold", "vector", "zero", "x", "discrete", "indiscrete", "dimension", "sequence", "factor",  "sphere", "ripple", "fraction", "precision", "scope",  "effect", "theory", "calculus", "vertex", "isometric", "continuous", "squared", "negative"]
+words_tech_scientific = ["axion", "Equilibrium", "joint", "friction", "synthesis", "projection", "hypersphere", "manifold", "vectors", "zeros", "discrete", "dimension", "sequence", "factor",  "sphere", "ripple", "fraction", "precision", "scope",  "effect", "theories", "calculus", "vertex", "isometric", "continuous", "squared", "negative"]
 words_tech_abstract = ["atlas", "alpha", "beta", "loop"]
 words_tech_audacious = ["force", "world", "universe"]
 
@@ -33,7 +33,7 @@ adjs_human_antropomorphism = ["spark", "wunder", "unique",  "smart", "virtuoso",
 adjs_human_playful = ["playful", "joyful", "joyous", "cheerful", "jubilant", "exuberant", "spirited", "delightful", "upside-down", "ease of mind", "thrilled", "euphoric", "affectionate", "wonder", "pleasant", "pleasing", "enchanted", "fascinating", "charismatic", "delightful", "youthful", "youth", "generation", "misplaced", "furry", "express", "improvised", "play", "silly", "curious"]
 adjs_human_colors = ["yellow", "blue", "red", "black", "violet", "orange", "turquoise"]
 adjs_human_nature = ["hot", "cold"]
-adjs_human_audacious = ["greatest", "ingenious", "audacious", "force", "incredible", "mastery", "world", "explosion", "tide", "universal", "upward", "forward", "no limit", "powerful", "dangerous", "broken"]
+adjs_human_audacious = ["greatest", "ingenious", "audacious", "force", "incredible", "mastery", "world", "explosion", "tide", "universal", "upward", "forward", "powerful", "dangerous", "broken"]
 adjs_human_honest = ["noble", "tiny", "genuine", "candid", "sincere", "loyal", "pure", "nude", "honest", "natural", "mindful", "easy", "compact", "almost", "strange", "simple"]
 adjs_human_opposite = ["opposite","impossible", "vain", "absurd", "wild", "undoable", "unreasonable"]
 
