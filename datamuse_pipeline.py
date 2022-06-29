@@ -1,16 +1,18 @@
 from dataclasses import dataclass
 from datamuse import Datamuse
-from typing import List
+from typing import List, Callable
 import pandas as pd
 
 api = Datamuse()
 
-@dataclass
-class Options:
-    synonym:str = 'synonym',
-    first_letter:str = 'first_letter'
 
-options = Options()
+    
+
+options = dict(
+    synonym = lambda worda, wordb: api.words(rel_syn=wordb, max=1),
+    first_letter = lambda worda, wordb: api.words(rel_syn=wordb, sp=worda[0]+'*', max=1),
+    approximate_rhyme = lambda worda, wordb: api.words(rel_syn=wordb, rel_nry=worda, max=1)
+)
 
 def test_api():
     print(api.words(rel_rhy='ninth', max=5))  # words that rhyme with "ninth"
@@ -21,22 +23,15 @@ def test_api():
     api.words(rel_jjb='frontier', topics='startup', max=5)
 
 
-def grab_option(worda:str, wordb:str, type:str) -> List[dict]:
-    if type == options.synonym:
-        return api.words(rel_syn=wordb, max=1)
-    elif type == options.first_letter:
-        return  api.words(rel_syn=wordb, sp=worda[0]+'*', max=1)
-    elif type == options.approximate_rhyme:
-        return api.words(rel_syn=wordb, rel_nry=worda, max=1)
-    
-    
+def grab_option(worda:str, wordb:str, type:Callable) -> List[dict]:
+    return type(worda, wordb)
 
 
-def improve_word(composite_word: str, type:str = options.synonym) -> str:
+def improve_word(composite_word: str, type:Callable) -> str:
     """
     Given a word, return a better word.
     """
-    print(f"--- type is: {type} ---")
+
     words_split = composite_word.split(" ")
     
     if len(words_split) == 2:
@@ -48,20 +43,31 @@ def improve_word(composite_word: str, type:str = options.synonym) -> str:
     res = grab_option(worda, wordb, type)
 
     if len(res) > 0:
-        wordb = res[0]['word']
+        wordb = res[0]['word'].capitalize()
         new_word = ' '.join([worda, wordb])
         print('✅ Improvement found for ' + composite_word + ' -> '  + new_word)
-        composite_word = new_word
+        return new_word
     else:
         print('❌ No improvement found for ' + composite_word)
-    
-    return composite_word
+        print('| Trying with reverse words...')
+        res = grab_option(wordb, worda, type)
+        if len(res) > 0:
+            worda = res[0]['word'].capitalize()
+            new_word = ' '.join([worda, wordb])
+            print('✅ Improvement found for ' + composite_word + ' -> '  + new_word)
+            return new_word
+        else: 
+            print('❌ No improvement found for reverse ' + composite_word)
+            return composite_word
+
 
 def run_pipeline():
-    df = pd.read_csv('words.csv')[:10]
-    
-    df.apply(lambda row: improve_word(row['names']), axis=1)
-    df.to_csv('words_improved.csv')
+    for key, type in options.items():
+        print(f"--- type is: {key} ---")
+        
+        df = pd.read_csv('words.csv')[:5]
+        df.apply(lambda row: improve_word(row['names'], type), axis=1)
+        df.to_csv(f'words_improved_{key}.csv', index=False)
 
 if __name__ == '__main__':
     run_pipeline()
