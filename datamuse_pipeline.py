@@ -6,12 +6,12 @@ import pandas as pd
 api = Datamuse()
 
 
-    
+max_results = 5    
 
 options = dict(
-    synonym = lambda worda, wordb: api.words(rel_syn=wordb, max=1),
-    first_letter = lambda worda, wordb: api.words(rel_syn=wordb, sp=worda[0]+'*', max=1),
-    approximate_rhyme = lambda worda, wordb: api.words(rel_syn=wordb, rel_nry=worda, max=1)
+    synonym = lambda worda, wordb: api.words(rel_syn=wordb, max=max_results),
+    first_letter = lambda worda, wordb: api.words(rel_syn=wordb, sp=worda[0]+'*', max=max_results),
+    approximate_rhyme = lambda worda, wordb: api.words(rel_syn=wordb, rel_nry=worda, max=max_results)
 )
 
 def test_api():
@@ -43,19 +43,17 @@ def improve_word(composite_word: str, type:Callable) -> str:
     res = grab_option(worda, wordb, type)
 
     if len(res) > 0:
-        wordb = res[0]['word'].capitalize()
-        new_word = ' '.join([worda, wordb])
-        print('✅ Improvement found for ' + composite_word + ' -> '  + new_word)
-        return new_word
+        new_suggestions = ' | '.join([' '.join([worda, res_one['word'].capitalize()]) for res_one in res])
+        print('✅ Improvement found for ' + composite_word + ' -> '  + new_suggestions)
+        return new_suggestions
     else:
         print('❌ No improvement found for ' + composite_word)
         print('| Trying with reverse words...')
         res = grab_option(wordb, worda, type)
         if len(res) > 0:
-            worda = res[0]['word'].capitalize()
-            new_word = ' '.join([worda, wordb])
-            print('✅ Improvement found for ' + composite_word + ' -> '  + new_word)
-            return new_word
+            new_suggestions = ' | '.join([' '.join([res_one['word'].capitalize(), wordb]) for res_one in res])
+            print('✅ Improvement found for ' + composite_word + ' -> '  + new_suggestions)
+            return new_suggestions
         else: 
             print('❌ No improvement found for reverse ' + composite_word)
             return composite_word
@@ -66,7 +64,7 @@ def run_pipeline():
         print(f"--- type is: {key} ---")
         
         df = pd.read_csv('words.csv')[:5]
-        df.apply(lambda row: improve_word(row['names'], type), axis=1)
+        df['improved'] = df.apply(lambda row: improve_word(row['names'], type), axis=1)
         df.to_csv(f'words_improved_{key}.csv', index=False)
 
 if __name__ == '__main__':
