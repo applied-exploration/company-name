@@ -52,5 +52,5 @@ word_combos = adjs_word_combos + ending_word_combos + things_combined_word_combo
 import pprint
 pprint.pprint(word_combos)
 
-with open("words.log", "w") as log_file:
+with open("data/generated/words.log", "w") as log_file:
     pprint.pprint(word_combos, log_file)

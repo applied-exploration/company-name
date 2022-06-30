@@ -11,10 +11,10 @@ max_results = 5
 limit_db = -1
 
 options = dict(
-    synonym = lambda worda, wordb: api.words(rel_syn=wordb, max=max_results),
-    first_letter = lambda worda, wordb: api.words(rel_syn=wordb, sp=worda[0]+'*', max=max_results),
-    approximate_rhyme = lambda worda, wordb: api.words(rel_syn=wordb, rel_nry=worda, max=max_results),
-    rhyme = lambda worda, wordb: api.words(rel_syn=wordb, rel_rhy=worda, max=max_results)
+    # synonym = lambda worda, wordb: api.words(rel_syn=wordb, max=max_results),
+    alliterate = lambda worda, wordb: api.words(rel_syn=wordb, sp=worda[0]+'*', max=max_results),
+    # approximate_rhyme = lambda worda, wordb: api.words(rel_syn=wordb, rel_nry=worda, max=max_results),
+    # rhyme = lambda worda, wordb: api.words(rel_syn=wordb, rel_rhy=worda, max=max_results)
 )
 
 def test_api():
@@ -63,16 +63,16 @@ def improve_word(composite_word: str, type:Callable) -> str:
             return ""
 
 
-def run_pipeline():
+def improve():
     for key, type in options.items():
         print(f"--- type is: {key} ---")
         
-        df = pd.read_csv('words.csv')[:limit_db]
+        df = pd.read_csv('data/generated/words.csv')[:limit_db]
         df['improved'] = df.apply(lambda row: improve_word(row['names'], type), axis=1)
-        df.to_csv(f'words_improved_{key}.csv', index=False)
+        df.to_csv(f'data/improved/words_improved_{key}.csv', index=False)
 
 if __name__ == '__main__':
-    run_pipeline()
+    improve()
 
 # rel_jja	Popular nouns modified by the given adjective, per Google Books Ngrams	gradual → increase
 # rel_jjb	Popular adjectives used to modify the given noun, per Google Books Ngrams	beach → sandy
