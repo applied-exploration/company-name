@@ -35,7 +35,7 @@ def generate():
     # adjs_human_colors = ["yellow", "blue", "red", "black", "violet", "orange", "turquoise"]
     adjs_human_nature = ["streaming", "flowing", "hot", "cold"]
     adjs_human_audacious = ["swift", "imminent", "stimulating", "unconventional", "unexpected", "impassioned", "imagination", "greatest", "ingenious", "audacious", "force", "incredible", "mastery", "world", "explosion", "tide", "universal", "upward", "forward", "powerful", "dangerous", "broken"]
-    adjs_human_honest = ["noble", "tiny", "genuine", "candid", "sincere", "loyal", "pure", "nude", "honest", "natural", "mindful", "easy", "compact", "almost", "strange", "simple"]
+    adjs_human_honest = ["quiet", "noble", "tiny", "genuine", "candid", "sincere", "loyal", "pure", "nude", "honest", "natural", "mindful", "easy", "compact", "almost", "strange", "simple"]
     adjs_human_opposite = ["electric", "unattainable", "impalpable", "indescribable", "ambiguous", "bound", "opposite","impossible", "vain", "absurd", "wild", "undoable", "unreasonable"]
     adjs_latin = ["astro-", "pre-", "post-", "ab-", "ex-", "semi-", "ultra-", "hyper-", "inter-"]
     verbs = ["poke"]
@@ -45,7 +45,7 @@ def generate():
     adjs_tech_applied_experimental = ["compact", "scientific", "exploratory"]
     adjs_tech_algorithm = ["buttons", "recurrence", "volatile", "stochastic", "unknown", "algorithmic", "rapid", "deterministic", "unresolved", "random"]
     adjs_tech_inventive = ["future", "breakthrough"]
-    adjs_tech_scientific = ["eletric", "upstream", "exponential", "space", "infinite", "discrete", "indiscrete", "high-dimensional", "parallel", "absolute", "relative", "quantum", "super-",  "exo", "nano", "isometric", "continuous", "singular", "negative"]
+    adjs_tech_scientific = ["atomic", "eletric", "upstream", "exponential", "space", "infinite", "discrete", "indiscrete", "high-dimensional", "parallel", "absolute", "relative", "quantum", "super-",  "exo", "nano", "isometric", "continuous", "singular", "negative"]
     adjs_tech_abstract = ["intertwined","invariant", "Intangible", "Undecidable", "Ethereal", "Spectral", "recursive", "meta"]
 
     adjs_tech = adjs_latin + adjs_tech_applied_experimental + adjs_tech_algorithm + adjs_tech_inventive + adjs_tech_scientific + adjs_tech_abstract
@@ -66,7 +66,7 @@ def generate():
     tech_human_word_combos = [tuple_to_str(combo) for combo in chain.from_iterable([list(zip(words_human, [thing] * len(words_human))) for thing in things_tech])]
 
     human_human_word_combos = [tuple_to_str(combo) for combo in chain.from_iterable([list(zip(adjs_human, [thing] * len(adjs_human))) for thing in things_human])]
-    adj_adj_combos = [tuple_to_str(combo) for combo in chain.from_iterable([list(zip(adjs_tech, [thing] * len(adjs_tech))) for thing in adjs_human])]
+    adj_adj_combos = [tuple_to_str(combo) for combo in combinations(adjs_human + adjs_tech, 2)]
 
     words_all_combos = [tuple_to_str(combo) for combo in chain.from_iterable([list(zip(things_human, [thing] * len(things_human))) for thing in things_human])]
     # tech_tech_word_combos = [tuple_to_str(combo) for combo in chain.from_iterable([list(zip(adjs_tech, [thing] * len(adjs_tech))) for thing in things_tech])]
